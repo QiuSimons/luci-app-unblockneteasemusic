@@ -19,7 +19,7 @@ else
 fi
 
 TEMP_DIR="$(mktemp -d -p $PWD)"
-TEMP_PKG_DIR="$TEMP_DIR/$(get_mk_value "PKG_NAME")"
+TEMP_PKG_DIR="$TEMP_DIR/$PKG_NAME"
 mkdir -p "$TEMP_PKG_DIR/CONTROL/"
 mkdir -p "$TEMP_PKG_DIR/usr/lib/lua/luci/"
 
@@ -32,7 +32,7 @@ cat > "$TEMP_PKG_DIR/CONTROL/control" <<-EOF
 	Package: $PKG_NAME
 	Version: $PKG_VERSION
 	Depends: libc, $(get_mk_value "LUCI_DEPENDS" | tr " +" ", " | xargs)
-	Source: https://github.com/immortalwrt/luci-app-unblockneteasemusic
+	Source: https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic
 	SourceName: $PKG_NAME
 	Section: luci
 	SourceDateEpoch: $PKG_SOURCE_DATE_EPOCH
