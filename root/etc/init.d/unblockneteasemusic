@@ -86,6 +86,7 @@ append_filter_client() {
 start_service() {
 	config_load "$NAME"
 	is_enabled "config" "enable" || return 1
+	command -v node >/dev/null 2>&1 || (opkg update && opkg install node)
 
 	local update_time
 	config_get update_time "config" "update_time" "3"
