@@ -317,6 +317,7 @@ service_stopped() {
 
 reload_service() {
 	stop
+	command -v node >/dev/null 2>&1 || (opkg update && opkg install node)
 	start
 }
 
