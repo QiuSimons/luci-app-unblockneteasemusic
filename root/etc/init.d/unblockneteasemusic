@@ -16,6 +16,8 @@ IPT_N="iptables -t nat"
 IPT_INPUT_RULE="unm_input_rule"
 FW4="$(command -v fw4)"
 
+if [ "$(uci get unblockneteasemusic.config.enable)" = "1" ] && ! command -v node &> /dev/null; then opkg update &> /dev/null && opkg install node &> /dev/null; fi
+
 is_enabled() {
 	local enabled
 	config_get_bool enabled "$1" "$2" "${3:-0}"
