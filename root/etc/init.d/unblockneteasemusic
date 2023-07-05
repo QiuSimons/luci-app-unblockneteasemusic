@@ -20,6 +20,7 @@ is_enabled() {
 	local enabled
 	config_get_bool enabled "$1" "$2" "${3:-0}"
 	if [ "$enabled" -eq "1" ]; then
+		command -v node >/dev/null 2>&1 || (opkg update && opkg install node)
 		return 0
 	else
 		return 1
