@@ -15,6 +15,7 @@ RUN_DIR="/var/run/$NAME"
 IPT_N="iptables -t nat"
 IPT_INPUT_RULE="unm_input_rule"
 FW4="$(command -v fw4)"
+[ "$(uci get unblockneteasemusic.config.enable)" = "1" ] && command -v node >/dev/null 2>&1 || (opkg update && opkg install node)
 
 is_enabled() {
 	local enabled
